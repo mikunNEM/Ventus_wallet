@@ -111,8 +111,10 @@
         <li>
           <div id="nftdrive_explorer"></div>
         </li>
+        <li><a href="https://ventus-wallet.net/peernode/" target="_blank">⛓️Peer Node List⛓️</a></li>
         <li><a href="https://xym-monster.netlify.app/" target="_blank">😈 XYM Monster 😈</a></li>
         <li><a href="https://mosaic-center.net/" target="_blank">📝 Mosaic Center 📝</a></li>
+        <li><a href="https://ventus-wallet.net/richlist/" target="_blank">💰Mosaic Rich List💰</a></li>
         <li><a href="https://ventus-wallet.net/Mosaic_Viewer" target="_blank">🖼️ Mosaic Viewer 🖼️</a></li>
         <li>
           <div id="hv_checker"></div>
@@ -480,7 +482,7 @@
         <br>
         <table id="ns_table"></table>
         <br>
-             ※ 「レンタル期間」 ➕ 「猶予期間」 が<b>ネームスペース更新期限</b>になります。
+        ※ 「レンタル期間」 ➕ 「猶予期間」 が<b>ネームスペース更新期限</b>になります。
         <br>
         <div>※ <b>ネームスペース更新期限</b>の 30日前(猶予期間)に、ステータスが無効❌になります。テストネットでは 更新期限の 1日前(猶予期間)に、ステータスが無効❌になります。</div>
       </div>
@@ -668,7 +670,10 @@
         </div>
 
         <br>
-        <table id="holder_table"></table>
+        <div class="table-container">
+          <button id="download_csv_button">CSVダウンロード</button>
+          <table id="holder_table"></table>
+        </div>
       </div>
     </div>
     <div class="black-background_r" id="js-black-bg_r"></div>
@@ -928,7 +933,7 @@
                   onclick="window.open('https://symbol-tools.com/symbolTools/view/tool/nodeList.html')">ノードリスト</button>
               </div>
               <div class="mb-3">
-                <label for="node" class="form-label">委任ノード 選択</label>
+                <label for="node" class="form-label">委任するノードを入力してください</label>
                 <input type="text" class="form-control" id="node" placeholder="例）symbol-mikun.net　　　（HTTPSノードのみ）">
                 <!--  <div class="alert alert-primary mt-3" role="alert">
                <div id="tx"></div>
@@ -946,7 +951,7 @@
           integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
           crossorigin="anonymous"></script>
         <br>
-        <table id="harvest" class="table" style="width:35%;margin: auto;text-align: center">
+        <table id="harvest" class="table" style="width:45%;margin: auto;text-align: center">
           <thead>
             <tr>
               <th>日時</th>
@@ -1718,8 +1723,8 @@
                 }
                 if (cells[4] !== undefined) {              // 5列目がある場合
                   message1[i] = cells[4];
-                  if (bytelength(cells[4]) > 1023) {
-                    Swal.fire(`[${i + 1}行目]  メッセージのサイズが${bytelength(cells[4])}バイトです!!          
+                  if (byteLengthUTF8(cells[4]) > 1023) {
+                    Swal.fire(`[${i + 1}行目]  メッセージのサイズが${byteLengthUTF8(cells[4])}バイトです!!          
                    1023バイト 以下にしてください。`);
                     return;
                   }
@@ -1806,8 +1811,8 @@
                 }
                 if (cells[4] !== undefined) {              // 5列目がある場合
                   message1[i] = cells[4];
-                  if (bytelength(cells[4]) > 1023) {
-                    Swal.fire(`[${i + 1}行目]  メッセージのサイズが${bytelength(cells[4])}バイトです!!          
+                  if (byteLengthUTF8(cells[4]) > 1023) {
+                    Swal.fire(`[${i + 1}行目]  メッセージのサイズが${byteLengthUTF8(cells[4])}バイトです!!          
                    1023バイト 以下にしてください。`);
                     return;
                   }
@@ -1882,8 +1887,8 @@
                 }
                 if (cells[4] !== undefined) {              // 5列目がある場合
                   message1[i] = cells[4];
-                  if (bytelength(cells[4]) > 1023) {
-                    Swal.fire(`[${i + 1}行目]  メッセージのサイズが${bytelength(cells[4])}バイトです!!          
+                  if (byteLengthUTF8(cells[4]) > 1023) {
+                    Swal.fire(`[${i + 1}行目]  メッセージのサイズが${byteLengthUTF8(cells[4])}バイトです!!          
                    1023バイト 以下にしてください。`);
                     return;
                   }
@@ -1970,8 +1975,8 @@
                 }
                 if (cells[4] !== undefined) {              // 5列目がある場合
                   message1[i] = cells[4];
-                  if (bytelength(cells[4]) > 1023) {
-                    Swal.fire(`[${i + 1}行目]  メッセージのサイズが${bytelength(cells[4])}バイトです!!          
+                  if (byteLengthUTF8(cells[4]) > 1023) {
+                    Swal.fire(`[${i + 1}行目]  メッセージのサイズが${byteLengthUTF8(cells[4])}バイトです!!          
                    1023バイト 以下にしてください。`);
                     return;
                   }
@@ -2042,8 +2047,8 @@
                 }
                 if (cells[4] !== undefined) {              // 5列目がある場合
                   message1[i] = cells[4];
-                  if (bytelength(cells[4]) > 1023) {
-                    Swal.fire(`[${i + 1}行目]  メッセージのサイズが${bytelength(cells[4])}バイトです!!          
+                  if (byteLengthUTF8(cells[4]) > 1023) {
+                    Swal.fire(`[${i + 1}行目]  メッセージのサイズが${byteLengthUTF8(cells[4])}バイトです!!          
                    1023バイト 以下にしてください。`);
                     return;
                   }
@@ -2122,8 +2127,8 @@
                 }
                 if (cells[4] !== undefined) {              // 5列目がある場合
                   message1[i] = cells[4];
-                  if (bytelength(cells[4]) > 1023) {
-                    Swal.fire(`[${i + 1}行目]  メッセージのサイズが${bytelength(cells[4])}バイトです!!          
+                  if (byteLengthUTF8(cells[4]) > 1023) {
+                    Swal.fire(`[${i + 1}行目]  メッセージのサイズが${byteLengthUTF8(cells[4])}バイトです!!          
                    1023バイト 以下にしてください。`);
                     return;
                   }
@@ -2150,8 +2155,12 @@
       }
     });
 
-    function bytelength(s) {   //    文字列のバイト長(UTF-8)を得る
+    /*function bytelength(s) {   //    文字列のバイト長(UTF-8)を得る
       return encodeURI(s).replace(/%../g, "*").length;
+    }*/
+
+    function byteLengthUTF8(s) {
+      return new TextEncoder().encode(s).length;
     }
 
   </script>

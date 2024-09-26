@@ -3327,6 +3327,21 @@ hr {
 
 /*******************************************/
 
+.table-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  /* 水平方向に中央揃え */
+  margin-top: 20px;
+}
+
+#download_csv_button {
+  position: absolute;
+  top: -35px;
+  border-radius: 5px;
+  /*right: 0;*/
+}
+
 table {
   table-layout: fixed;  /*  */
   border-collapse:  collapse; /* セルの線を重ねる */
